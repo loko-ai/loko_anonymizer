@@ -1,0 +1,50 @@
+[
+ {
+  "name": "Anonymizer",
+  "description": "",
+  "group": "Custom",
+  "icon": "RiFileLockLine",
+  "click": null,
+  "events": null,
+  "configured": true,
+  "inputs": [
+   {
+    "id": "text",
+    "label": "text",
+    "service": "anonymize",
+    "to": "output"
+   }
+  ],
+  "outputs": [
+   {
+    "id": "output",
+    "label": "output"
+   }
+  ],
+  "options": {
+   "values": {},
+   "args": [
+    {
+     "name": "keep",
+     "type": "text",
+     "label": "keep",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "Don't anonymize these entity types. One of 'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', 'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'. Comma separated",
+     "validation": null
+    },
+    {
+     "name": "entities",
+     "type": "boolean",
+     "label": "entities",
+     "helper": "",
+     "group": "",
+     "value": null,
+     "description": "Returns also extracted entities",
+     "validation": null
+    }
+   ]
+  }
+ }
+]
