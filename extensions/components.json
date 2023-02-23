@@ -1,7 +1,7 @@
 [
  {
   "name": "Anonymizer",
-  "description": "",
+  "description": "### Description\n**Anonymizer** component  masks text basing on the extracted entities by the **it_nerIta_trf model**.\n\n### Configuration\n\n- **keep** is used to set which kind of entities you don't want to anonymize.\n\nHere you can find the list of available categories:\n```\n'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PER', \n'PERCENT', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART'\n``` \n\n- **entities** allows to visualize the extracted entities.\n\n### Input\nThe component accepts text in input.\n\n### Output\nThe output is the masked text if parameter **entities** is set to False. Otherwise, it returns a dictionary containing \nalso the extracted entities associated to the text tokenization:\n\n```\n{\n  \"anonymized_text\": \"Mi chiamo ****** e vivo a ****** .\",\n  \"entities\": [\n    {\n      \"end\": 3,\n      \"label\": \"PER\",\n      \"start\": 2,\n      \"text\": \"Mario\"\n    },\n    {\n      \"end\": 7,\n      \"label\": \"GPE\",\n      \"start\": 6,\n      \"text\": \"Roma\"\n    }\n  ],\n  \"tokens\": [\n    \"Mi\",\n    \"chiamo\",\n    \"Mario\",\n    \"e\",\n    \"vivo\",\n    \"a\",\n    \"Roma\",\n    \".\"\n  ]\n}\n```\n",
   "group": "Custom",
   "icon": "RiFileLockLine",
   "click": null,

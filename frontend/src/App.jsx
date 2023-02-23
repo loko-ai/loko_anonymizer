@@ -73,27 +73,18 @@ function LivePanel({ state }) {
             state.anon = "";
             state.entities = [];
             state.processing = true;
+
             axios
-              .post(urlJoin(baseURL, "anonymize"), state.value, {
+              .post(urlJoin(baseURL, "anonymize"), {"value": state.value, "args": {"entities": true}}, {
                 headers: { "Content-Type": "application/json" },
               })
               .then((resp) => {
-                state.anon = resp.data;
+                console.debug(resp.data);
+                state.anon = resp.data.anonymized_text;
+                state.entities = resp.data.entities;
               })
               .finally(() => {
                 state.processing = false;
-              });
-            axios
-              .post(urlJoin(baseURL, "entities"), state.value, {
-                headers: { "Content-Type": "application/json" },
-              })
-              .then((resp) => {
-                if (Array.isArray(resp.data)) {
-                  state.entities = resp.data;
-                }
-                if (resp.data?.label) {
-                  state.entities = [resp.data];
-                }
               });
           }}
           colorScheme="blue"
@@ -161,9 +152,7 @@ function URLProcessor({ state }) {
         w="20%"
         onClick={(e) =>
           axios
-            .get(urlJoin(baseURL, "pdf/text"), {
-              params: { url: state.url },
-            })
+            .post(urlJoin(baseURL, "pdf/url"), {"value": state.url, "args": {}})
             .then((resp) => {
               console.log(resp.data);
               state.value = resp.data;
@@ -268,9 +257,7 @@ function App() {
       state.value = "";
       state.anon = "";
       axios
-        .get(urlJoin(baseURL, "pdf/text"), {
-          params: { url: state.url },
-        })
+        .post(urlJoin(baseURL, "pdf/url"), {"value": state.url, "args": {}})
         .then((resp) => {
           console.log(resp.data);
           state.value = resp.data;

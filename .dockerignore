@@ -1,4 +1,6 @@
 venv
 .idea
+!.env
+!.env.production
 __pycache__
 **/node_modules

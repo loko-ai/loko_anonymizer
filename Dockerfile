@@ -3,7 +3,7 @@ ADD ./frontend/package.json /frontend/package.json
 WORKDIR /frontend
 RUN yarn install
 ADD ./frontend /frontend
-RUN yarn build --base="/routes/anonymization/web/"
+RUN yarn build --base="/routes/loko_anonymizer/web/"
 
 FROM python:3.7-slim
 EXPOSE 8080
