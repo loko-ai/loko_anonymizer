@@ -41,3 +41,4 @@ Each entity is represented by a dictionary:
 ```
 
 *start* and *end* refer to the tokenization of the text given in input to the block.
+
